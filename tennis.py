@@ -12,9 +12,18 @@ class Game:
             self.P1Score()
         else:
             self.P2Score()
+
+            
+
     
     def score(self):
+
         result = ""
+
+        player_1_result = ""
+        player_2_result = ""
+
+        minus_result = self.player1Points - self.player2Points
 
         DEUCE = "Deuce"
         LOVE = "Love"
@@ -37,8 +46,6 @@ class Game:
         if (self.player1Points == self.player2Points and self.player1Points > 2):
             result = DEUCE
         
-        player_1_result = ""
-        player_2_result = ""
 
         if (self.player1Points > 0 and self.player2Points == 0):
             if (self.player1Points == 1):
@@ -103,9 +110,9 @@ class Game:
         if (self.player2Points > self.player1Points and self.player1Points >= 3):
             result = ADVANTAGE + self.player2Name
         
-        if (self.player1Points >= 4 and self.player2Points >= 0 and (self.player1Points - self.player2Points) >=2 ):
+        if (self.player1Points >= 4 and self.player2Points >= 0 and minus_result >=2 ):
             result = WIN_FOR + self.player1Name
-        if (self.player2Points >= 4 and self.player1Points >= 0 and (self.player2Points - self.player1Points) >=2 ):
+        if (self.player2Points >= 4 and self.player1Points >= 0 and minus_result >=2 ):
             result = WIN_FOR + self.player2Name
         return result
     
