@@ -104,12 +104,6 @@ class Game:
 
             result = player_1_result + "-" + player_2_result
         
-        if (player_1_advantage and self.player2_points >= 3):
-            result = ADVANTAGE + self.player1_name
-        
-        if (player_2_advantage and self.player1_points >= 3):
-            result = ADVANTAGE + self.player2_name
-        
         if self.game_over():
             result = WIN_FOR + self.current_player_advantage
 
