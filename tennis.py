@@ -30,18 +30,22 @@ class Game:
         FORTY = "Forty"
         ADVANTAGE = "Advantage "
         WIN_FOR = "Win for "
+
+        SCORE = [{
+            0: LOVE,
+            1: FIFTEEN,
+            2: THIRTY,
+            3: FORTY
+        }]
         
-        
-
-        if (self.tied_game() and self.player1_points < 3):
-            if (self.player1_points == 0):
-                result = LOVE+"All"
-
-            elif (self.player1_points == 1):
-                result = FIFTEEN+"All"
-
-            else:
-                result = THIRTY+"All"
+        def current_game(self):
+            self._current_game
+            if self.tied_game() and self.player1_points < 3:
+                if self.player1_points == SCORE[self.player1_points]:
+                    result = SCORE[self.player1_points]+"All"
+                else:
+                    result = DEUCE
+            return self._current_game = result
                 
         if (self.tied_game() and self.player1_points > 2):
             result = DEUCE
