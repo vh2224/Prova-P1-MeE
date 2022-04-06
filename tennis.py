@@ -110,11 +110,8 @@ class Game:
         if (player_2_advantage and self.player1_points >= 3):
             result = ADVANTAGE + self.player2_name
         
-        if (self.player1_points >= 4 and self.player2_points >= 0 and minus_result >=2 ):
-            result = WIN_FOR + self.player1_name
-
-        if (self.player2_points >= 4 and self.player1_points >= 0 and minus_result >=2 ):
-            result = WIN_FOR + self.player2_name
+        if self.game_over():
+            result = WIN_FOR + self.current_player_advantage
 
         return result
     
