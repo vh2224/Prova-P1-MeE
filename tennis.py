@@ -47,9 +47,6 @@ class Game:
                     result = DEUCE
             return self._current_game = result
                 
-        if (self.tied_game() and self.player1_points > 2):
-            result = DEUCE
-        
 
         if (self.player1_points > 0 and self.player2_points == 0):
             if (self.player1_points == 1):
@@ -78,40 +75,21 @@ class Game:
             result = player_1_result + "-" + player_2_result
         
         
-        if (player_1_advantage and self.player1_points < 4):
-            if (self.player1_points == 2):
-                player_1_result = THIRTY
-
-            elif (self.player1_points == 3):
-                player_1_result = FORTY
-
-            elif (self.player2_points == 1):
-                player_2_result = FIFTEEN
-
-            elif (self.player2_points == 2):
-                player_2_result = THIRTY
+        def advantage_game(self):
+            self._advantage_game =  self.player1_points > self.player2_points or self.player2_points > self.player1_points
+            if (self._advantage_game and self.current_player_advantage() < 4):
+                if (self.player1_points == SCORE[self.player1_points]):
+                    player_1_result = SCORE[self.player1_points]
+                else:
+                    player_2_result = SCORE[self.player2_points] 
 
             result = player_1_result + "-" + player_2_result
 
-        if (player_2_advantage and self.player2_points < 4):
-            if (self.player2_points == 2):
-                player_2_result = THIRTY
-
-            elif (self.player2_points == 3):
-                player_2_result = FORTY
-
-            elif (self.player1_points == 1):
-                player_1_result = FIFTEEN
-
-            elif (self.player1_points == 2):
-                player_1_result = THIRTY
-
-            result = player_1_result + "-" + player_2_result
+            return result
         
         if self.game_over():
             result = WIN_FOR + self.current_player_advantage
 
-        return result
     
     def SetP1Score(self, number):
         for i in range(number):
