@@ -23,9 +23,6 @@ class Game:
 
         minus_result = self.player1_points - self.player2_points
 
-        player_1_advantage = self.player1_points > self.player2_points
-        player_2_advantage = self.player2_points > self.player1_points
-
         DEUCE = "Deuce"
         LOVE = "Love"
         FIFTEEN = "Fifteen"
@@ -132,11 +129,19 @@ class Game:
     def P1Score(self):
         self.player1_points += 1
     
-    
     def P2Score(self):
         self.player2_points += 1
 
     def tied_game(self):
         return self.player1_points == self.player2_points
+
+    def game_over(self):
+        return self.player1_points >= 4 or self.player2_points >= 4
     
-    
+    def current_player_advantage(self):
+        if self.player1_points > self.player2_points:
+            player_advantage = self.player1_name
+        else:
+            player_advantage = self.player2_name
+
+        return player_advantage
